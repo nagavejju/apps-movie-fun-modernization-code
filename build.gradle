@@ -15,6 +15,9 @@ buildscript {
 repositories {
     mavenCentral()
 }
+task deployCF{
+   'cf push moviefun -p build/libs/moviefun-1.1.0-SNAPSHOT.war -b java_buildpack_offline --random-route'.execute().getText()
+}
 
 apply plugin: "java"
 apply plugin: "war"
@@ -45,3 +48,9 @@ dependencies {
     compile "org.apache.geronimo.specs:geronimo-osgi-locator:1.1"
     compile "org.apache.geronimo.components:geronimo-jaspi:2.0.0"
 }
+
+
+
+
+
+
