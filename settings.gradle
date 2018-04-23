@@ -3,3 +3,8 @@ rootProject.name = 'moviefun'
 include "applications:movie-fun-app"
 include "components:movies"
 include "components:albums"
+include "components:albums-api"
+include "components:albums-persistence"
+include "components:blobstore"
+include "components:movies-api"
+include "components:movies-persistence"

@@ -12,6 +12,11 @@ dependencies {
 
     compile project(":components:movies")
     compile project(":components:albums")
+    compile project(":components:albums-api")
+    compile project(":components:albums-persistence")
+    compile project(":components:blobstore")
+    compile project(":components:movies-api")
+    compile project(":components:movies-persistence")
 
     compile "taglibs:standard:1.1.2"
     compile "org.springframework.boot:spring-boot-starter-web"
