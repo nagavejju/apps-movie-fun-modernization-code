@@ -6,6 +6,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.superbiz.moviefun.CsvUtils;
 import org.superbiz.moviefun.blobstore.Blob;
 import org.superbiz.moviefun.blobstore.BlobStore;
 
@@ -15,7 +16,8 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import static com.fasterxml.jackson.dataformat.csv.CsvSchema.ColumnType.NUMBER;
-import static org.superbiz.moviefun.CsvUtils.readFromCsv;
+import static org.superbiz.moviefun.CsvUtils.*;
+
 
 @Service
 public class AlbumsUpdater {
