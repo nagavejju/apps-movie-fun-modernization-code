@@ -5,6 +5,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.superbiz.moviefun.CsvUtils;
 import org.superbiz.moviefun.blobstore.Blob;
@@ -23,11 +24,13 @@ public class AlbumsUpdater {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     private final ObjectReader objectReader;
-    private final BlobStore blobStore;
+
+
+    private final BlobStore s3Store;
     private final AlbumsBean albumsBean;
 
-    public AlbumsUpdater(BlobStore blobStore, AlbumsBean albumsBean) {
-        this.blobStore = blobStore;
+    public AlbumsUpdater(BlobStore s3Store, AlbumsBean albumsBean) {
+        this.s3Store = s3Store;
         this.albumsBean = albumsBean;
 
         CsvSchema schema = builder()
@@ -41,7 +44,7 @@ public class AlbumsUpdater {
     }
 
     public void update() throws IOException {
-        Optional<Blob> maybeBlob = blobStore.get("albums.csv");
+        Optional<Blob> maybeBlob = s3Store.get("albums.csv");
 
         if (!maybeBlob.isPresent()) {
             logger.info("No albums.csv found when running AlbumsUpdater!");
