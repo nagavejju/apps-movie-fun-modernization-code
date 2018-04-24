@@ -57,6 +57,7 @@ task clean(type: Delete) {
 
 defaultTasks "clean", "build", "dependenciesGraph"
 
+
 task deploy {
     doLast {
         println "cf push".execute().text
