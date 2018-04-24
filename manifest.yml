@@ -23,4 +23,4 @@ applications:
   - moviefun-s3
   env:
     ALBUMS_URL: https://album-service-rao.apps.longs.pal.pivotal.io/albums
-    MOVIES_URL: https://movie-database-rao.apps.longs.pal.pivotal.io/movies
+    MOVIES_URL: https://movie-service-rao.apps.longs.pal.pivotal.io/movies
