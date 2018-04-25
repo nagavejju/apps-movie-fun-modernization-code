@@ -1,10 +1,14 @@
 ---
 memory: 1G
 instances: 1
+services:
+- movie-fun-sso
 applications:
 - name: album-service
   env:
     GRANT_TYPE: client_credentials
+    SECURITY_USER_NAME: user
+    SECURITY_USER_PASSWORD: password
   path: applications/album-service/build/libs/album-service-1.1.0-SNAPSHOT.jar
   routes:
   - route: album-service-rao.apps.longs.pal.pivotal.io
@@ -14,6 +18,8 @@ applications:
 - name: movie-service
   env:
     GRANT_TYPE: client_credentials
+    SECURITY_USER_NAME: user
+    SECURITY_USER_PASSWORD: password
   path: applications/movie-service/build/libs/movie-service-1.1.0-SNAPSHOT.jar
   routes:
   - route: movie-service-rao.apps.longs.pal.pivotal.io
@@ -25,8 +31,9 @@ applications:
   - route: movie-fun-app-rao.apps.longs.pal.pivotal.io
   services:
   - moviefun-s3
-  - movie-fun-sso
   env:
     GRANT_TYPE: authorization_code
+    SECURITY_USER_NAME: user
+    SECURITY_USER_PASSWORD: password
     ALBUMS_URL: https://album-service-rao.apps.longs.pal.pivotal.io/albums
     MOVIES_URL: https://movie-service-rao.apps.longs.pal.pivotal.io/movies
